@@ -12,7 +12,7 @@ void Element::Element_PHOT()
 	Name = "PHOT";
 	Colour = 0xFFFFFF_rgb;
 	MenuVisible = 1;
-	MenuSection = SC_NUCLEAR;
+	MenuSection = SC_PARTICLE;
 	Enabled = 1;
 
 	Advection = 0.0f;
@@ -34,7 +34,7 @@ void Element::Element_PHOT()
 
 	DefaultProperties.temp = R_TEMP + 900.0f + 273.15f;
 	HeatConduct = 251;
-	Description = "Photons. Refracts through glass, scattered by quartz, and color-changed by different elements. Ignites flammable materials.";
+	Description = "Photon.";
 
 	Properties = TYPE_ENERGY|PROP_LIFE_DEC|PROP_LIFE_KILL_DEC;
 

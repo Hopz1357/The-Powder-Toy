@@ -47,7 +47,8 @@ inline ByteString IntroText()
 {
 	ByteStringBuilder sb;
 	sb << "\bl\bU" << APPNAME << "\bU - Version " << DISPLAY_VERSION[0] << "." << DISPLAY_VERSION[1] << " - https://powdertoy.co.uk, irc.libera.chat #powder, https://tpt.io/discord\n"
-	      "\n"
+		  "\n"
+		  "\boThe Atomic Mod \brRemake \bo- Version 0.4 \n" // unfinished!!!
 	      "\n"
 	      "\bgControl+C/V/X are Copy, Paste and cut respectively.\n"
 	      "\bgTo choose a material, hover over one of the icons on the right, it will show a selection of elements in that group.\n"

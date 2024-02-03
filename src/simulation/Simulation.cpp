@@ -1999,6 +1999,7 @@ void Simulation::create_gain_photon(int pp)//photons from PHOT going through GLO
 	parts[i].tmp = 0;
 	parts[i].tmp3 = 0;
 	parts[i].tmp4 = 0;
+	parts[i].state = 0;
 	photons[ny][nx] = PMAP(i, PT_PHOT);
 
 	temp_bin = (int)((parts[i].temp-273.0f)*0.25f);
@@ -2038,6 +2039,7 @@ void Simulation::create_cherenkov_photon(int pp)//photons from NEUT going throug
 	parts[i].tmp = 0;
 	parts[i].tmp3 = 0;
 	parts[i].tmp4 = 0;
+	parts[i].state = 0;
 	photons[ny][nx] = PMAP(i, PT_PHOT);
 
 	if (lr) {

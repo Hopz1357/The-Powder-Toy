@@ -5,10 +5,10 @@ static int update(UPDATE_FUNC_ARGS);
 void Element::Element_H2()
 {
 	Identifier = "DEFAULT_PT_H2";
-	Name = "HYGN";
+	Name = "H";
 	Colour = 0x5070FF_rgb;
 	MenuVisible = 1;
-	MenuSection = SC_GAS;
+	MenuSection = SC_ATOM;
 	Enabled = 1;
 
 	Advection = 2.0f;
@@ -28,8 +28,9 @@ void Element::Element_H2()
 
 	Weight = 1;
 
+	DefaultProperties.state = 1;
 	HeatConduct = 251;
-	Description = "Hydrogen. Combusts with OXYG to make WATR. Undergoes fusion at high temperature and pressure.";
+	Description = "Hydrogen.";
 
 	Properties = TYPE_GAS;
 
@@ -37,8 +38,8 @@ void Element::Element_H2()
 	LowPressureTransition = NT;
 	HighPressure = IPH;
 	HighPressureTransition = NT;
-	LowTemperature = ITL;
-	LowTemperatureTransition = NT;
+	LowTemperature = 20.28f;
+	LowTemperatureTransition = PT_HL;
 	HighTemperature = ITH;
 	HighTemperatureTransition = NT;
 

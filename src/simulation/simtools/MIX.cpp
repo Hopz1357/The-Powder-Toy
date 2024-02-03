@@ -10,7 +10,7 @@ void SimTool::Tool_MIX()
 	Identifier = "DEFAULT_TOOL_MIX";
 	Name = "MIX";
 	Colour = 0xFFD090_rgb;
-	Description = "Mixes particles.";
+	Description = "Mixes particles. (Improved)";
 	Perform = &perform;
 }
 
@@ -22,12 +22,9 @@ static int perform(Simulation * sim, Particle * cpart, int x, int y, int brushX,
 	if(!thisPart)
 		return 0;
 
-	if(sim->rng() % 100 != 0)
-		return 0;
-
 	int distance = (int)(std::pow(strength, .5f) * 10);
 
-	if(!(elements[TYP(thisPart)].Properties & (TYPE_PART | TYPE_LIQUID | TYPE_GAS)))
+	if(!(elements[TYP(thisPart)].Properties & (TYPE_PART | TYPE_SOLID | TYPE_LIQUID | TYPE_GAS)))
 		return 0;
 
 	int newX = x + (sim->rng() % distance) - (distance/2);

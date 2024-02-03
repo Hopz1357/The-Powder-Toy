@@ -10,7 +10,7 @@ void Element::Element_ELEC()
 	Name = "ELEC";
 	Colour = 0xDFEFFF_rgb;
 	MenuVisible = 1;
-	MenuSection = SC_NUCLEAR;
+	MenuSection = SC_PARTICLE;
 	Enabled = 1;
 
 	Advection = 0.0f;
@@ -32,7 +32,7 @@ void Element::Element_ELEC()
 
 	DefaultProperties.temp = R_TEMP + 200.0f + 273.15f;
 	HeatConduct = 251;
-	Description = "Electrons. Sparks electronics, reacts with NEUT and WATR.";
+	Description = "Electron.";
 
 	Properties = TYPE_ENERGY|PROP_LIFE_DEC|PROP_LIFE_KILL_DEC;
 

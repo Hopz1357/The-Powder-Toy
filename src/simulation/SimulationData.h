@@ -16,24 +16,26 @@
 #include <shared_mutex>
 
 constexpr int SC_WALL      =  0;
-constexpr int SC_ELEC      =  1;
-constexpr int SC_POWERED   =  2;
-constexpr int SC_SENSOR    =  3;
-constexpr int SC_FORCE     =  4;
-constexpr int SC_EXPLOSIVE =  5;
-constexpr int SC_GAS       =  6;
-constexpr int SC_LIQUID    =  7;
-constexpr int SC_POWDERS   =  8;
-constexpr int SC_SOLIDS    =  9;
-constexpr int SC_NUCLEAR   = 10;
-constexpr int SC_SPECIAL   = 11;
-constexpr int SC_LIFE      = 12;
-constexpr int SC_TOOL      = 13;
-constexpr int SC_FAVORITES = 14;
-constexpr int SC_DECO      = 15;
-constexpr int SC_CRACKER   = 16;
-constexpr int SC_CRACKER2  = 17;
-constexpr int SC_TOTAL     = 16;
+constexpr int SC_ATOM      =  1;
+constexpr int SC_PARTICLE  =  2;
+constexpr int SC_ELEC      =  3;
+constexpr int SC_POWERED   =  4;
+constexpr int SC_SENSOR    =  5;
+constexpr int SC_FORCE     =  6;
+constexpr int SC_EXPLOSIVE =  7;
+constexpr int SC_GAS       =  8;
+constexpr int SC_LIQUID    =  9;
+constexpr int SC_POWDERS   = 10;
+constexpr int SC_SOLIDS    = 11;
+constexpr int SC_NUCLEAR   = 12;
+constexpr int SC_SPECIAL   = 13;
+constexpr int SC_LIFE      = 14;
+constexpr int SC_TOOL      = 15;
+constexpr int SC_FAVORITES = 16;
+constexpr int SC_DECO      = 17;
+constexpr int SC_CRACKER   = 18;
+constexpr int SC_CRACKER2  = 19;
+constexpr int SC_TOTAL     = 18;
 
 constexpr int O_WL_WALLELEC     = 122;
 constexpr int O_WL_EWALL        = 123;

@@ -124,7 +124,7 @@ static int update(UPDATE_FUNC_ARGS)
 								parts[ID(r)].life = 4;
 							} else if (TYP(r) == PT_CRAY || nostop) {
 								docontinue = 1;
-							} else if(destroy && r && (TYP(r) != PT_DMND)) {
+							} else if(destroy && r && (TYP(r) != PT_DMND) && (TYP(r) != PT_WALL)) {
 								sim->kill_part(ID(r));
 								if(!--partsRemaining)
 									docontinue = 0;

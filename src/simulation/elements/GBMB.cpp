@@ -61,7 +61,7 @@ static int update(UPDATE_FUNC_ARGS)
 					continue;
 				if(TYP(r)!=PT_BOMB && TYP(r)!=PT_GBMB &&
 				   TYP(r)!=PT_CLNE && TYP(r)!=PT_PCLN &&
-				   TYP(r)!=PT_DMND)
+				   TYP(r)!=PT_DMND && TYP(r)!=PT_WALL)
 				{
 					parts[i].life=60;
 					break;

@@ -9,6 +9,12 @@ simulation_tool_names = [
 	'CYCL',
 	'AMBM',
 	'AMBP',
+	'PHET', #P_TOOL
+	'PCOL',
+	'PAIR',
+	'PVAC',
+	'PABM',
+	'PABP',
 ]
 
 simulation_tool_src = []

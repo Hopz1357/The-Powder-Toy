@@ -11,7 +11,7 @@ void Element::Element_PROT()
 	Name = "PROT";
 	Colour = 0x990000_rgb;
 	MenuVisible = 1;
-	MenuSection = SC_NUCLEAR;
+	MenuSection = SC_PARTICLE;
 	Enabled = 1;
 
 	Advection = 0.0f;
@@ -32,7 +32,7 @@ void Element::Element_PROT()
 	Weight = -1;
 
 	HeatConduct = 61;
-	Description = "Protons. Transfer heat to materials, and removes sparks.";
+	Description = "Proton.";
 
 	Properties = TYPE_ENERGY;
 

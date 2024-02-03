@@ -17,7 +17,7 @@ simulation_elem_names = [
 	'SPRK',
 	'SNOW',
 	'WOOD',
-	'NEUT',
+	disabler(), #NEUT
 	'PLUT',
 	'PLNT',
 	'ACID',
@@ -30,7 +30,7 @@ simulation_elem_names = [
 	'DMND',
 	'BMTL',
 	'BRMT',
-	'PHOT',
+	disabler(), #PHOT
 	'URAN',
 	'WAX',
 	'MWAX',
@@ -135,7 +135,7 @@ simulation_elem_names = [
 	'PQRT',
 	'EMP',
 	'BREC',
-	'ELEC',
+	disabler(), #ELEC
 	'ACEL',
 	'DCEL',
 	'BANG',
@@ -147,7 +147,7 @@ simulation_elem_names = [
 	'EXOT',
 	disabler(),
 	'EMBR',
-	'H2',
+	disabler(), #H2
 	'SOAP',
 	'NBHL',
 	'NWHL',
@@ -172,11 +172,11 @@ simulation_elem_names = [
 	'GOLD',
 	'TUNG',
 	'PSNS',
-	'PROT',
+	disabler(), #PROT
 	'VIRS',
 	'VRSS',
 	'VRSG',
-	'GRVT',
+	disabler(), #GRVT
 	'DRAY',
 	'CRMC',
 	'HEAC',
@@ -192,7 +192,17 @@ simulation_elem_names = [
 	'ROCK',
 	'LITH',
 	'RSST',
-	'RSSS'
+	'RSSS',
+	'WALL', #MOD_ELEMENT
+	'H2',   #ATOMS
+	'HL',
+	'HS',
+	'HP',
+	'ELEC', #PARTICLES
+	'NEUT', 
+	'PROT',
+	'PHOT',
+	'GRVT'
 ]
 
 simulation_elem_src = []

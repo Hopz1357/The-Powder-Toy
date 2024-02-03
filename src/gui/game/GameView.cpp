@@ -2349,30 +2349,8 @@ void GameView::OnDraw()
 				}
 				sampleInfo << ", Temp: ";
 				format::RenderTemperature(sampleInfo, sample.particle.temp, c->GetTemperatureScale());
+				sampleInfo << " / " << Format::Fixed(sample.particle.temp) << "K";
 				sampleInfo << ", Life: " << sample.particle.life;
-				if (sample.particle.type != PT_RFRG && sample.particle.type != PT_RFGL && sample.particle.type != PT_LIFE)
-				{
-					if (sample.particle.type == PT_CONV)
-					{
-						String elemName = c->ElementResolve(
-							TYP(sample.particle.tmp),
-							ID(sample.particle.tmp));
-						if (elemName == "")
-							sampleInfo << ", Tmp: " << sample.particle.tmp;
-						else
-							sampleInfo << ", Tmp: " << elemName;
-					}
-					else
-						sampleInfo << ", Tmp: " << sample.particle.tmp;
-				}
-
-				// only elements that use .tmp2 show it in the debug HUD
-				if (type == PT_CRAY || type == PT_DRAY || type == PT_EXOT || type == PT_LIGH || type == PT_SOAP || type == PT_TRON
-						|| type == PT_VIBR || type == PT_VIRS || type == PT_WARP || type == PT_LCRY || type == PT_CBNW || type == PT_TSNS
-						|| type == PT_DTEC || type == PT_LSNS || type == PT_PSTN || type == PT_LDTC || type == PT_VSNS || type == PT_LITH
-						|| type == PT_CONV || type == PT_ETRD)
-					sampleInfo << ", Tmp2: " << sample.particle.tmp2;
-
 				sampleInfo << ", Pressure: " << sample.AirPressure;
 			}
 			else
@@ -2446,6 +2424,9 @@ void GameView::OnDraw()
 
 			sampleInfo << "X:" << sample.PositionX << " Y:" << sample.PositionY;
 
+			if (type)
+				sampleInfo << ", VX: " << sample.particle.vx << " VY: " << sample.particle.vy;
+
 			if (sample.Gravity)
 				sampleInfo << ", GX: " << sample.GravityVelocityX << " GY: " << sample.GravityVelocityY;
 
@@ -2458,6 +2439,45 @@ void GameView::OnDraw()
 			auto textWidth = Graphics::TextSize(sampleInfo.Build()).X - 1;
 			g->BlendFilledRect(RectSized(Vec2{ XRES-20-textWidth, 27 }, Vec2{ textWidth+8, 14 }), 0x000000_rgb .WithAlpha(int(alpha*0.5f)));
 			g->BlendText({ XRES-16-textWidth, 30 }, sampleInfo.Build(), 0xFFFFFF_rgb .WithAlpha(int(alpha*0.75f)));
+		}
+
+		StringBuilder sampleInfo2;
+		sampleInfo2 << Format::Precision(2);
+		if (sample.particle.type) {
+			if (showDebug) {
+				if (sample.particle.type != PT_RFRG && sample.particle.type != PT_RFGL && sample.particle.type != PT_LIFE)
+				{
+					if (sample.particle.type == PT_CONV)
+					{
+						String elemName = c->ElementResolve(
+							TYP(sample.particle.tmp),
+							ID(sample.particle.tmp));
+						if (elemName == "")
+							sampleInfo2 << "Tmp: " << sample.particle.tmp;
+						else
+							sampleInfo2 << "Tmp: " << elemName;
+					}
+					else
+						sampleInfo2 << "Tmp: " << sample.particle.tmp;
+				}
+				sampleInfo2 << ", Tmp2: " << Format::Fixed(sample.particle.tmp2);
+				sampleInfo2 << ", Tmp3: " << Format::Fixed(sample.particle.tmp3);
+				sampleInfo2 << ", Tmp4: " << Format::Fixed(sample.particle.tmp4);
+				if (sample.particle.state == 1)
+				{
+					sampleInfo2 << ", State: Solid";
+				}
+				else if (sample.particle.state == 2)
+				{
+					sampleInfo2 << ", State: Powder";
+				}
+			}
+		}
+		String built = sampleInfo2.Build();
+		if (built.size()) {
+			auto textWidth2 = Graphics::TextSize(sampleInfo2.Build()).X - 1;
+			g->BlendFilledRect(RectSized(Vec2{ XRES - 20 - textWidth2, 41 }, Vec2{ textWidth2 + 8, 14 }), 0x000000_rgb.WithAlpha(int(alpha * 0.5f)));
+			g->BlendText({ XRES - 16 - textWidth2, 44 }, sampleInfo2.Build(), 0xFFFFFF_rgb.WithAlpha(int(alpha * 0.75f)));
 		}
 	}
 
