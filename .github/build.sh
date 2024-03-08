@@ -72,10 +72,11 @@ if [[ -z ${BSH_NO_PACKAGES-} ]]; then
 		if [[ $BSH_BUILD_PLATFORM-$BSH_HOST_LIBC == windows-mingw ]]; then
 			pacman -S --noconfirm --needed mingw-w64-ucrt-x86_64-gcc
 			if [[ $BSH_STATIC_DYNAMIC == static ]]; then
-				pacman -S --noconfirm --needed mingw-w64-ucrt-x86_64-{cmake,7zip} patch
+				pacman -S --noconfirm --needed mingw-w64-ucrt-x86_64-{cmake,7zip,jq} patch
 			else
-				pacman -S --noconfirm --needed mingw-w64-ucrt-x86_64-{pkgconf,bzip2,luajit,jsoncpp,curl,SDL2,libpng,meson,fftw}
+				pacman -S --noconfirm --needed mingw-w64-ucrt-x86_64-{pkgconf,bzip2,luajit,jsoncpp,curl,SDL2,libpng,meson,fftw,jq}
 			fi
+			export PKG_CONFIG=$(which pkg-config.exe)
 		fi
 		;;
 	linux)
@@ -289,6 +290,10 @@ if [[ $RELEASE_TYPE == snapshot ]] && [[ $MOD_ID != 0 ]]; then
 fi
 if [[ $RELEASE_TYPE == snapshot ]] || [[ $MOD_ID != 0 ]]; then
 	meson_configure+=$'\t'-Dupdate_server=starcatcher.us/TPT
+	if [[ $BSH_HOST_PLATFORM == emscripten ]]; then
+		meson_configure+=$'\t'-Dserver=tptserv.starcatcher.us
+		meson_configure+=$'\t'-Dstatic_server=tptserv.starcatcher.us/Static
+	fi
 fi
 if [[ $RELEASE_TYPE != dev ]]; then
 	meson_configure+=$'\t'-Dignore_updates=false
