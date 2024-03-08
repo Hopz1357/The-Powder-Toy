@@ -2330,6 +2330,15 @@ void GameView::OnDraw()
 					else
 						sampleInfo << " (unknown mode)";
 				}
+				else if (type == PT_NTRI || type == PT_ANTR)
+				{
+					sampleInfo << c->ElementResolve(type, ctype);
+					String filtModes[] = { "None", "Electron", "Muon", "Tau" };
+					if (sample.particle.tmp >= 1 && sample.particle.tmp <= 3)
+						sampleInfo << " (" << filtModes[sample.particle.tmp] << ")";
+					else
+						sampleInfo << " (None)";
+				}
 				else
 				{
 					sampleInfo << c->ElementResolve(type, ctype);

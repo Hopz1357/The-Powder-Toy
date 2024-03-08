@@ -66,6 +66,22 @@ static int update(UPDATE_FUNC_ARGS)
 			auto rt = TYP(r);
 			switch (rt)
 			{
+			case PT_PRON:
+			{
+				auto n1 = sim->create_part(-1, x + rx, y + ry, PT_PHOT);
+				auto n2 = sim->create_part(-1, x + rx, y + ry, PT_PHOT);
+				float a1 = sim->rng.between(0, 359) * 3.14159f / 180.0f;
+				float a2 = sim->rng.between(0, 359) * 3.14159f / 180.0f;
+				sim->kill_part(i);
+				sim->kill_part(ID(r));
+				parts[n1].life = 50;
+				parts[n2].life = 50;
+				parts[n1].vx = 3.0f * cosf(a1);
+				parts[n2].vx = 3.0f * cosf(a2);
+				parts[n1].vy = 3.0f * sinf(a1);
+				parts[n2].vy = 3.0f * sinf(a2);
+				break;
+			}
 			case PT_GLAS:
 				for (auto rrx=-1; rrx<=1; rrx++)
 				{
@@ -98,14 +114,16 @@ static int update(UPDATE_FUNC_ARGS)
 					sim->create_part(ID(r), x+rx, y+ry, PT_H2);
 				sim->kill_part(i);
 				return 1;
-			case PT_PROT: // this is the correct reaction, not NEUT, but leaving NEUT in anyway
+			case PT_PROT:
 				if (parts[ID(r)].tmp2 & 0x1)
 					break;
-			case PT_NEUT:
-				sim->part_change_type(ID(r), x+rx, y+ry, PT_H2);
-				parts[ID(r)].life = 0;
-				parts[ID(r)].ctype = 0;
-				sim->kill_part(i);
+				else
+				{
+					sim->part_change_type(ID(r), x + rx, y + ry, PT_H2);
+					parts[ID(r)].life = 0;
+					parts[ID(r)].ctype = 0;
+					sim->kill_part(i);
+				}
 				break;
 			case PT_DEUT:
 				if(parts[ID(r)].life < 6000)

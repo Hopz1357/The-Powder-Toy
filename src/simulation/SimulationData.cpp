@@ -202,6 +202,16 @@ void SimulationData::init_can_move()
 		{
 			can_move[PT_PROT][destinationType] = 2;
 			can_move[PT_GRVT][destinationType] = 2;
+			can_move[PT_UPQK][destinationType] = 2;
+			can_move[PT_DNQK][destinationType] = 2;
+			can_move[PT_CHQK][destinationType] = 2;
+			can_move[PT_STQK][destinationType] = 2;
+			can_move[PT_TPQK][destinationType] = 2;
+			can_move[PT_BTQK][destinationType] = 2;
+		}
+		if (destinationType != PT_DMND && destinationType != PT_WALL)
+		{
+			can_move[PT_NTRI][destinationType] = 2;
 		}
 	}
 

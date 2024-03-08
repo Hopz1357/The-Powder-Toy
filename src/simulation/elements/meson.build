@@ -198,7 +198,16 @@ simulation_elem_names = [
 	'HL',
 	'HS',
 	'HP',
-	'ELEC', #PARTICLES
+	'UPQK', #PARTICLES
+	'DNQK',
+	'CHQK',
+	'STQK',
+	'TPQK',
+	'BTQK',
+	'ELEC', 
+	'NTRI',
+	'PRON',
+	'ANTR',
 	'NEUT', 
 	'PROT',
 	'PHOT',
